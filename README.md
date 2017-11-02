@@ -4,7 +4,9 @@ Changes the structured data output by WooCommerce as part of investigations into
 
 If the query string contains the variation attributes to identify a specific variation of the product, then a variation specific Offer will be added **alongside** the original AggregateOffer. E.g.
 
-### http://www.example.com/product/variable-widget - AggregateOffer with Min/Max price
+### http://www.example.com/product/variable-widget
+Standard WooCommerce behaviour. An AggregateOffer will be output with Min/Max prices.
+
 ```json
 {
     "@type": "Product",
@@ -31,7 +33,9 @@ If the query string contains the variation attributes to identify a specific var
 }
 ```
 
-### http://www.example.com/my-variable-widget?attribute_pa_color=red - Offer with price of red widget
+### http://www.example.com/my-variable-widget?attribute_pa_color=red
+The standard WooCommerce AggregateOffer will be retained. A second Offer will be added as well with the price of the specific selected variation.
+
 ```json
 {
     "@type": "Product",
