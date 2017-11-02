@@ -4,10 +4,13 @@ Changes the structured data output by WooCommerce as part of investigations into
 
 If the query string contains the variation attributes to identify a specific variation of the product, then a variation specific Offer will be added **alongside** the original AggregateOffer. E.g.
 
+**Note:  
+This is not intended as a final solution, or a long-term production plugin. Use it only if you are assisting with the investigation into [WooCommerce issue #17471](https://github.com/woocommerce/woocommerce/issues/17471).**
+
 ### http://www.example.com/product/variable-widget
 Standard WooCommerce behaviour. An AggregateOffer will be output with Min/Max prices.
 
-```json
+```javascript
 {
     "@type": "Product",
     "@id": "http:\/\/www.example.com\/product\/variable-widget\/",
@@ -36,7 +39,7 @@ Standard WooCommerce behaviour. An AggregateOffer will be output with Min/Max pr
 ### http://www.example.com/my-variable-widget?attribute_pa_color=red
 The standard WooCommerce AggregateOffer will be retained. A second Offer will be added as well with the price of the specific selected variation.
 
-```json
+```javascript
 {
     "@type": "Product",
     "@id": "http:\/\/www.example.com\/product\/variable-widget\/",
@@ -73,4 +76,3 @@ The standard WooCommerce AggregateOffer will be retained. A second Offer will be
     ]
 }
 ```
-**Note:** This is not intended as a final solution, or a long-term production plugin. Use it only if you are assisting with the investigation into [WooCommerce issue #17471](https://github.com/woocommerce/woocommerce/issues/17471).
