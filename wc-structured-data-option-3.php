@@ -28,6 +28,7 @@ add_filter( 'woocommerce_structured_data_product', function( $markup, $product )
 		$markup_offer = $markup['offers'][0];
 		unset( $markup_offer['lowPrice'] );
 		unset( $markup_offer['highPrice'] );
+		unset( $markup_offer['offerCount'] );
 		$markup_offer['@type'] = 'Offer';
 		// Set the price on the new offer to the price for this variation.
 		$markup_offer['price'] = wc_format_decimal( $variation->get_price(), wc_get_price_decimals() );
