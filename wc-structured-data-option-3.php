@@ -5,9 +5,9 @@
  * Plugin URI: https://github.com/woocommerce/woocommerce/issues/17471
  * Description: Implements alternative structured data for variations as per the discussions on https://github.com/woocommerce/woocommerce/issues/17471.
  * Author: Lee Willis
- * Version: 0.2
- * WC requires at least: 3.2.0
- * WC tested up to: 3.2.0
+ * Version: 0.3
+ * WC requires at least: 3.8.0
+ * WC tested up to: 4.3.0
  * Author URI: http://www.leewillis.co.uk/
  * License: GPLv3
  */
@@ -16,6 +16,7 @@ add_filter( 'woocommerce_structured_data_product', function( $markup, $product )
 	if ( ! $product->is_type( 'variable' ) ) {
 		return $markup;
 	}
+
 	// See if we've pre-selected a specific variation with query arguments.
 	$data_store   = WC_Data_Store::load( 'product' );
 	$variation_id = $data_store->find_matching_product_variation( $product, wp_unslash( $_GET ) );
@@ -36,7 +37,7 @@ add_filter( 'woocommerce_structured_data_product', function( $markup, $product )
 		$markup_offer['url'] = $variation->get_permalink();
 		$markup_offer['sku'] = $variation->get_sku();
 		// Add the variation offer to the list of offers.
-		$markup['offers'][] = apply_filters( 'woocommerce_structured_data_product_offer', $markup_offer, $product );
+		$markup['offers'][] = apply_filters( 'woocommerce_structured_data_product_offer', $markup_offer, $variation );
 	}
 	return $markup;
 }, 99, 2);
